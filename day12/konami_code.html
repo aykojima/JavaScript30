@@ -7,21 +7,21 @@
 </head>
 <body>
 <script>
+    //this is my second trial
+    const keyTyped =[];
+    const SecretCode = 'secret';
     
-    const keyPressed = [];
-    const secretCode = 'meow';
-    
-    window.addEventListener('keyup', (e) => {
-//       console.log(e.key); 
-        keyPressed.push(e.key);
+    function typing(e){
+        keyTyped.push(e.key);
+        //array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+        //start = 0, deleteCount = 1
+        keyTyped.splice(-SecretCode.length -1, keyTyped.length - SecretCode.length);
         
-        keyPressed.splice(-secretCode.length -1, keyPressed.length - secretCode.length);
-        if(keyPressed.join('').includes(secretCode)){
+        if(keyTyped.join('').includes(SecretCode)){
             console.log('DING DING');
-            cornify_add();
         }
-        console.log(keyPressed);
-    });
+        console.log(keyTyped);
+    }
+    window.addEventListener('keyup', typing);
 </script>
 </body>
-</html>
