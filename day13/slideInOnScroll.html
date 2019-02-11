@@ -58,27 +58,24 @@
       };
     }
 
-      const sliderImages = document.querySelectorAll(".slide-in");
-      
-      function checkSlide(e){
-          
-          sliderImages.forEach(sliderImage => {
-              //half way through the image
-              const slideInAt = (window.scrollY + window.innerHeight) - (sliderImage.height / 2);
-              //bottom of the image 
-              const imageBottom = sliderImage.offsetTop + sliderImage.height;
-              const isHalfShown = slideInAt > sliderImage.offsetTop;
-              const isNotScrolledPast = window.scrollY < imageBottom;
-              if(isHalfShown && isNotScrolledPast){
-                  sliderImage.classList.add('active');
+      const slideImages = document.querySelectorAll('.slide-in');
+      function slideIn (e){
+          slideImages.forEach(slideImage =>{
+              const slideInAt = (window.innerHeight + window.scrollY) - (slideImage.height / 2);
+              const imageBottom = slideImage.offsetTop + slideImage.height;
+              const isHalfShown = slideInAt > slideImage.offsetTop;
+              const isNotScrollPassed = window.scrollY < imageBottom;
+              if(isHalfShown && isNotScrollPassed){
+                  slideImage.classList.add('active');
               }else{
-                  sliderImage.classList.remove ('active');
+                  slideImage.classList.remove('active');
               }
-          }
-      )
+    
+          })
       }
       
-      window.addEventListener('scroll', debounce(checkSlide));
+      window.addEventListener('scroll', debounce(slideIn));
+      
   </script>
 
   <style>
